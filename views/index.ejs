@@ -8,6 +8,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,700" rel="stylesheet">
 		<link rel="stylesheet" href="/css/main.css">
+	</head>
 	<body>
 		<header class="header">
 			<h1>American North West Lawn Bowling Rankings</h1>
@@ -19,7 +20,7 @@
 					<li class="active">Current Rankings</li>
 				</ul>
 			</nav>
-			<div class="ranking-container">
+			<section class="ranking-container">
 				<% for(let i=0; i < teams.length; i++) {%>
 					<div class="team-block">
 						<div class="ranking" style="background-color:<%= colors[i] %>;">
@@ -31,7 +32,7 @@
 						</div> <!-- team-details -->
 					</div> <!-- team-block -->
 				<% } %>
-			</div> <!-- ranking-container -->
+			</section> <!-- ranking-container -->
 		</main>
 	</body>
 </html>

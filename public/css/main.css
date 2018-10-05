@@ -14,13 +14,9 @@ body {
     position: absolute;
     content: '';
     background: -moz-linear-gradient(top, rgba(125, 185, 232, 0.7) 0%, #006cff 100%);
-    /* FF3.6-15 */
     background: -webkit-linear-gradient(top, rgba(125, 185, 232, 0.7) 0%, #006cff 100%);
-    /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to bottom, rgba(125, 185, 232, 0.7) 0%, #006cff 100%);
-    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007db9e8', endColorstr='#006cff',GradientType=0 );
-    /* IE6-9 */
     top: 0;
     left: 0;
     bottom: 0;
@@ -33,6 +29,8 @@ body {
     height: 60px;
     width: 60px;
     background: #006cff;
+    -webkit-transform: translate(-50%, -50%) rotate(45deg);
+    -ms-transform: translate(-50%, -50%) rotate(45deg);
     transform: translate(-50%, -50%) rotate(45deg);
     top: 100%;
     left: 50%;
@@ -62,12 +60,14 @@ main .navbar {
     main .navbar ul li {
       position: relative;
       display: inline-block;
-      font-size: 1.1rem;
+      font-size: 1.25rem;
       padding-bottom: 10px; }
       main .navbar ul li.active:after {
         content: '';
         bottom: 0;
         left: 50%;
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
         transform: translateX(-50%);
         height: 5px;
         width: 50px;
@@ -76,10 +76,19 @@ main .navbar {
 
 main .ranking-container {
   margin: 0 auto;
-  width: 60%; }
+  width: 60%;
+  max-width: 1200px; }
+  @media only screen and (max-width: 1000px) {
+    main .ranking-container {
+      width: 80%; } }
+  @media only screen and (max-width: 800px) {
+    main .ranking-container {
+      width: 90%; } }
   main .ranking-container .team-block {
     width: 100%;
     border: 1px solid #f7f7f7;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     background-color: #fff;
     border-radius: 10px;
@@ -87,22 +96,38 @@ main .ranking-container {
     -webkit-box-shadow: 21px 40px 79px -61px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 21px 40px 79px -61px rgba(0, 0, 0, 0.75);
     box-shadow: 21px 40px 79px -61px rgba(0, 0, 0, 0.75);
+    -webkit-transition: all .35s ease-in-out;
+    -o-transition: all .35s ease-in-out;
     transition: all .35s ease-in-out; }
+    @media only screen and (max-width: 575px) {
+      main .ranking-container .team-block {
+        display: block; } }
     main .ranking-container .team-block .ranking {
+      -ms-flex-preferred-size: 20%;
       flex-basis: 20%;
       position: relative;
-      border-radius: 10px 0px 0 10px; }
+      border-radius: 10px 0 0 10px; }
       main .ranking-container .team-block .ranking span {
         position: absolute;
         top: 50%;
         left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
         display: inline-block;
         color: #fff;
         font-size: 2.25rem; }
+      @media only screen and (max-width: 575px) {
+        main .ranking-container .team-block .ranking {
+          padding: 3rem;
+          border-radius: 10px 10px 0 0; } }
     main .ranking-container .team-block .team-details {
+      -ms-flex-preferred-size: 70%;
       flex-basis: 70%;
       padding: 2.5rem 5%; }
+      @media only screen and (max-width: 575px) {
+        main .ranking-container .team-block .team-details {
+          text-align: center; } }
       main .ranking-container .team-block .team-details h3 {
         font-size: 1.5rem;
         margin: 0;
@@ -114,5 +139,7 @@ main .ranking-container {
         color: #999;
         font-weight: 300; }
     main .ranking-container .team-block:hover {
+      -webkit-transform: translateY(-10px);
+      -ms-transform: translateY(-10px);
       transform: translateY(-10px);
       cursor: pointer; }
