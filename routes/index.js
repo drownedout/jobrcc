@@ -12,12 +12,25 @@ var connection = mysql.createConnection({
 connection.connect()
 
 router.get('/', function (req, res, next) {
-	connection.query('SELECT * FROM teams', function (err, rows, fields) {
+	connection.query(`SELECT a.name, b.team_id, SUM(c.points) AS total_points
+						FROM teams a 
+						JOIN users b ON a.id = b.team_id 
+						JOIN points c ON b.id = c.user_id 
+						GROUP BY a.name, b.team_id 
+						ORDER BY total_points DESC`,
+	function (err, rows, fields) {
 		if (err) {
 			throw err
 		}
 		res.render('index.ejs', {
-			teams: rows
+			teams: rows,
+			colors: [
+				'#FF1300',
+				'#FF8C00',
+				'#FFBB00',
+				'#00FF7D',
+				'#00A0FF'
+			]
 		})
 	})
 })
