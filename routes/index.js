@@ -1,13 +1,25 @@
-var express = require('express')
-var router = express.Router()
-var mysql = require('mysql')
+const express = require('express')
+const router = express.Router()
+const mysql = require('mysql')
 const keys = require('../config/keys')
+const env = process.env.NODE_ENV || 'development';
 
-var connection = mysql.createConnection({
-	host: keys.host,
-	user: keys.user,
-	database: keys.database
-})
+let connection;
+
+if ('development' == env) {
+	connection = mysql.createConnection({
+		host: keys.host,
+		user: keys.user,
+		database: keys.database
+	})
+} else {	
+	connection = mysql.createConnection({
+		host: process.env.RDS_HOSTNAME,
+	    user: process.env.RDS_USERNAME,
+	    password: process.env.RDS_PASSWORD,
+	    port: process.env.RDS_PORT
+	})
+}
 
 connection.connect()
 
