@@ -11,15 +11,11 @@
 		</header>
 		<main>
 			<div class="ranking-container">
-				<div class="ranking-block">
-					<h3>Placeholder</h3>
-				</div>
-				<div class="ranking-block">
-					<h3>Placeholder</h3>
-				</div>
-				<div class="ranking-block">
-					<h3>Placeholder</h3>
-				</div>
+				<% for(let i=0; i < teams.length; i++) {%>
+					<div class="ranking-block">
+						<h3><%= teams[i].name %></h3>
+					</div>
+				<% } %>
 			</div>
 		</main>
 	</body>
