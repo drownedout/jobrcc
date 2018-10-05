@@ -1,7 +1,20 @@
 const express = require('express');
-const app = express();
+var path = require('path');
 const port = 3000;
+const routes = require('./routes/index')
 
-app.get('/', (req, res) => res.send('Hello world!'));
+// Initialize App
+const app = express();
 
-app.listen(port, () => console.log(`App is listening on port ${port}`))
+// Public Folder
+app.use(express.static(path.join(__dirname, 'public')));
+
+// View Engine - EJS
+app.set('views', path.join(__dirname, 'views'));
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+
+// Routes
+app.use('/', routes);
+
+app.listen(port, () => console.log(`App is listening on port ${port}`));
