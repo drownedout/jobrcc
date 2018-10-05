@@ -2,7 +2,11 @@
 <html>
 	<head>
 		<title>ANWLBA Rankings</title>
-		<link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+		<meta charset="UTF-8">
+		<meta name="description" content="Rankings more important than attending your family's Thanksgiving dinner">
+		<meta name="author" content="Daniel Donnelly">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,700" rel="stylesheet">
 		<link rel="stylesheet" href="/css/main.css">
 	<body>
 		<header class="header">
@@ -10,13 +14,24 @@
 			<p>This Is How We Roll</p>
 		</header>
 		<main>
+			<nav class="navbar">
+				<ul>
+					<li class="active">Current Rankings</li>
+				</ul>
+			</nav>
 			<div class="ranking-container">
 				<% for(let i=0; i < teams.length; i++) {%>
-					<div class="ranking-block">
-						<h3><%= teams[i].name %></h3>
-					</div>
+					<div class="team-block">
+						<div class="ranking" style="background-color:<%= colors[i] %>;">
+							<span><%= [i+1] %></span>
+						</div> <!-- ranking-container -->
+						<div class="team-details">
+							<h3><%= teams[i].name %></h3>
+							<p><%= teams[i].total_points %> points</p>
+						</div> <!-- team-details -->
+					</div> <!-- team-block -->
 				<% } %>
-			</div>
+			</div> <!-- ranking-container -->
 		</main>
 	</body>
 </html>
