@@ -1,18 +1,16 @@
 {
   "name": "jobr",
   "version": "1.0.0",
-  "description": "",
+  "description": "Jobr coding challenge",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
     "sass": "node-sass -w -r public/scss/ -o public/css/"
   },
-  "author": "",
+  "author": "Daniel Donnelly",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.328.0",
-    "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "mysql": "^2.16.0"
