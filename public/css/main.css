@@ -35,23 +35,29 @@ body {
     top: 100%;
     left: 50%;
     z-index: 0; }
-  .header h1,
-  .header p {
-    text-align: center;
-    color: #fff;
-    letter-spacing: .05rem;
-    position: relative;
-    z-index: 2; }
-  .header h1 {
-    margin: 0;
-    font-size: 3.25rem;
-    text-align: center;
-    font-weight: 400; }
-  .header p {
-    font-weight: 300;
-    font-size: 1.5rem;
-    margin: .5rem;
-    opacity: .85; }
+  .header .header-wrapper {
+    width: 90%;
+    margin: 0 auto; }
+    .header .header-wrapper h1,
+    .header .header-wrapper p {
+      text-align: center;
+      color: #fff;
+      letter-spacing: .05rem;
+      position: relative;
+      z-index: 2; }
+    .header .header-wrapper h1 {
+      margin: 0;
+      font-size: 3.25rem;
+      text-align: center;
+      font-weight: 400; }
+      @media only screen and (max-width: 700px) {
+        .header .header-wrapper h1 {
+          font-size: 2.75rem; } }
+    .header .header-wrapper p {
+      font-weight: 300;
+      font-size: 1.5rem;
+      margin: .5rem;
+      opacity: .85; }
 
 main .navbar {
   text-align: center; }
