@@ -17,11 +17,19 @@ if ('development' == env) {
 		host: process.env.RDS_HOSTNAME,
 	    user: process.env.RDS_USERNAME,
 	    password: process.env.RDS_PASSWORD,
-	    port: process.env.RDS_PORT
+	    port: process.env.RDS_PORT,
+	    database: process.env.RDS_DB_NAME,
 	})
 }
 
-connection.connect()
+connection.connect(function(err) {
+  if (err) {
+    console.error('Database connection failed: ' + err.stack);
+    return;
+  }
+
+  console.log('Connected to database.');
+});
 
 router.get('/', function (req, res, next) {
 	connection.query(`SELECT a.name, b.team_id, SUM(c.points) AS total_points
@@ -46,5 +54,6 @@ router.get('/', function (req, res, next) {
 		})
 	})
 })
+
 
 module.exports = router
