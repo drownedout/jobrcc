@@ -1,4 +1,4 @@
-![Banner](./public/img/readme.jpg "Banner")
+![Banner](./public/img/rmbanner.jpg "Banner")
 
 # American North West Lawn Bowling Rankings
 

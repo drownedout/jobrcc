@@ -2,34 +2,34 @@ const express = require('express')
 const router = express.Router()
 const mysql = require('mysql')
 const keys = require('../config/keys')
-const env = process.env.NODE_ENV || 'development';
+const env = process.env.NODE_ENV || 'development'
 
-let connection;
+let connection
 
-if ('development' == env) {
+if (env === 'development') {
 	connection = mysql.createConnection({
 		host: keys.host,
 		user: keys.user,
 		database: keys.database
 	})
-} else {	
+} else {
 	connection = mysql.createConnection({
 		host: process.env.RDS_HOSTNAME,
-	    user: process.env.RDS_USERNAME,
-	    password: process.env.RDS_PASSWORD,
-	    port: process.env.RDS_PORT,
-	    database: process.env.RDS_DB_NAME,
+		user: process.env.RDS_USERNAME,
+		password: process.env.RDS_PASSWORD,
+		port: process.env.RDS_PORT,
+		database: process.env.RDS_DB_NAME
 	})
 }
 
-connection.connect(function(err) {
-  if (err) {
-    console.error('Database connection failed: ' + err.stack);
-    return;
-  }
+connection.connect(function (err) {
+	if (err) {
+		console.error('Database connection failed: ' + err.stack)
+		return
+	}
 
-  console.log('Connected to database.');
-});
+	console.log('Connected to database.')
+})
 
 router.get('/', function (req, res, next) {
 	connection.query(`SELECT a.name, b.team_id, SUM(c.points) AS total_points
@@ -54,6 +54,5 @@ router.get('/', function (req, res, next) {
 		})
 	})
 })
-
 
 module.exports = router
